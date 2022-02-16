@@ -78,6 +78,8 @@ int main() {
   }
 
   //Averages
+
+  //Average price per brand
   cout << "Average price per brand" << endl;
   vector<string>uniqueBrand;
   uniqueBrand = vBrand;
@@ -94,6 +96,24 @@ int main() {
     }
     average = sum/count;
     cout << uniqueBrand[i] + ": " << average << endl;
+  }
+
+  cout << "Average price per SKU" << endl;
+  vector<int>uniqueSKU;
+  uniqueSKU = vSKU;
+  uniqueSKU.erase( unique( uniqueSKU.begin(), uniqueSKU.end() ), uniqueSKU.end() );
+  for(int i = 0; i < uniqueSKU.size(); i++){
+    double sum = 0;
+    int count = 0;
+    double average = 0;
+    for(int j = 0; j < vSKU.size(); j++){
+      if(vSKU[j] == uniqueSKU[i]){
+        sum += vPrice[j];
+        count++;
+      }
+    }
+    average = sum/count;
+    cout << uniqueSKU[i] << ": " << average << endl;
   }
   
 
