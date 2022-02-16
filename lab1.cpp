@@ -98,6 +98,7 @@ int main() {
     cout << uniqueBrand[i] + ": " << average << endl;
   }
 
+  //Average price per SKU
   cout << "Average price per SKU" << endl;
   vector<int>uniqueSKU;
   uniqueSKU = vSKU;
@@ -115,6 +116,35 @@ int main() {
     average = sum/count;
     cout << uniqueSKU[i] << ": " << average << endl;
   }
+
+  //SKUs for each unique years
+  cout << "SKUs for each unique years" << endl;
+  vector<int>uniqueYear;
+  uniqueYear = vYear;
+  uniqueYear.erase( unique( uniqueYear.begin(), uniqueYear.end() ), uniqueYear.end() );
+
+  for(int i = 0; i<uniqueYear.size(); i++){
+    vector<int> skuOfYear;
+    int count = 0;
+    for(int j = 0; j < vSKU.size(); j++){
+      if(vYear[j] == uniqueYear[i]){
+        count++;
+        skuOfYear.push_back(vSKU[j]);
+      }
+    }
+
+    cout << uniqueYear[i] << "(" << count << ")" << ": ";
+    for(int i = 0; i<skuOfYear.size();i++){
+      if(i == skuOfYear.size() - 1){
+        cout << skuOfYear[i];
+      }else{
+        cout << skuOfYear[i] << ", ";
+      }
+    }
+
+    cout << "\n" << flush;
+  }
+
   
 
 }
