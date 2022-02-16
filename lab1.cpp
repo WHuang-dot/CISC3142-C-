@@ -78,7 +78,23 @@ int main() {
   }
 
   //Averages
-
+  cout << "Average price per brand" << endl;
+  vector<string>uniqueBrand;
+  uniqueBrand = vBrand;
+  uniqueBrand.erase( unique( uniqueBrand.begin(), uniqueBrand.end() ), uniqueBrand.end() );
+  for(int i = 0; i < uniqueBrand.size(); i++){
+    double sum = 0;
+    int count = 0;
+    double average = 0;
+    for(int j = 0; j < vBrand.size(); j++){
+      if(vBrand[j] == uniqueBrand[i]){
+        sum += vPrice[j];
+        count++;
+      }
+    }
+    average = sum/count;
+    cout << uniqueBrand[i] + ": " << average << endl;
+  }
   
 
 }
