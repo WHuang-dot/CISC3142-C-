@@ -9,6 +9,12 @@
 All programs must be able to compile in C++98 standard (the default version on Linux Machine). That means you cannot use the new features of C++11! :(
 */
 
+/* 
+Name : Wong Chi Kung Huang Liu
+EmplID : 23680237
+*/
+
+
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -81,51 +87,69 @@ int main() {
 
   //Average price per brand
   cout << "Average price per brand" << endl;
+
+  //create a vector that stores uniqueBrands
   vector<string>uniqueBrand;
   uniqueBrand = vBrand;
-  uniqueBrand.erase( unique( uniqueBrand.begin(), uniqueBrand.end() ), uniqueBrand.end() );
+  uniqueBrand.erase( unique( uniqueBrand.begin(), uniqueBrand.end() ), uniqueBrand.end() ); //remove duplcaites
+
+  //loop through unique brands
   for(int i = 0; i < uniqueBrand.size(); i++){
+    // initializes values for average calculation
     double sum = 0;
     int count = 0;
     double average = 0;
-    for(int j = 0; j < vBrand.size(); j++){
-      if(vBrand[j] == uniqueBrand[i]){
+
+    for(int j = 0; j < vBrand.size(); j++){ //loop through all brands to get their price
+      if(vBrand[j] == uniqueBrand[i]){ // if the brand is equal to the current unique brand the price is added to the sum
         sum += vPrice[j];
         count++;
       }
     }
-    average = sum/count;
+
+    average = sum/count; // calculate the average
     cout << uniqueBrand[i] + ": " << average << endl;
   }
 
   //Average price per SKU
   cout << "Average price per SKU" << endl;
+
+  //create a vector that stores uniqueSKUs
   vector<int>uniqueSKU;
   uniqueSKU = vSKU;
   uniqueSKU.erase( unique( uniqueSKU.begin(), uniqueSKU.end() ), uniqueSKU.end() );
+
+  //loop through unique SkUs
   for(int i = 0; i < uniqueSKU.size(); i++){
+    // initializes values for average calculation
     double sum = 0;
     int count = 0;
     double average = 0;
+
     for(int j = 0; j < vSKU.size(); j++){
-      if(vSKU[j] == uniqueSKU[i]){
+      if(vSKU[j] == uniqueSKU[i]){ // if the brand is equal to the current unique sku the price is added to the sum
         sum += vPrice[j];
         count++;
       }
     }
-    average = sum/count;
+    average = sum/count; //calculat the average
     cout << uniqueSKU[i] << ": " << average << endl;
   }
 
   //SKUs for each unique years
   cout << "SKUs for each unique years" << endl;
+
+  //create a vector that stores uniqueSKUs
   vector<int>uniqueYear;
   uniqueYear = vYear;
   uniqueYear.erase( unique( uniqueYear.begin(), uniqueYear.end() ), uniqueYear.end() );
 
+  //loop through unique Years
   for(int i = 0; i<uniqueYear.size(); i++){
-    vector<int> skuOfYear;
-    int count = 0;
+    vector<int> skuOfYear; // vector to store the Sku/s of the year
+    int count = 0; // to keep track amount of SKUs
+
+    // loop through all SKUs to get the SKU of the corresponding year
     for(int j = 0; j < vSKU.size(); j++){
       if(vYear[j] == uniqueYear[i]){
         count++;
@@ -134,15 +158,17 @@ int main() {
     }
 
     cout << uniqueYear[i] << "(" << count << ")" << ": ";
+
+    // outputs all the SKU recorded for the year
     for(int i = 0; i<skuOfYear.size();i++){
       if(i == skuOfYear.size() - 1){
-        cout << skuOfYear[i];
+        cout << skuOfYear[i]; // no comma for the last SKU
       }else{
         cout << skuOfYear[i] << ", ";
       }
     }
 
-    cout << "\n" << flush;
+    cout << "\n" << flush; // end the output
   }
 
   
