@@ -20,8 +20,21 @@ EmplID : 23680237
 #include <sstream>
 #include <vector>
 #include <fstream>
+#include <set>
+#include <algorithm>
 
 using namespace std; 
+
+//helper function for removing vector duplicates
+void remove(std::vector<string> &v)
+{
+    auto end = v.end();
+    for (auto it = v.begin(); it != end; ++it) {
+        end = std::remove(it + 1, end, *it);
+    }
+ 
+    v.erase(end, v.end());
+}
 
 int main() {
 
@@ -89,10 +102,11 @@ int main() {
   cout << "Average price per brand" << endl;
 
   //create a vector that stores uniqueBrands
+
   vector<string>uniqueBrand;
   uniqueBrand = vBrand;
-  uniqueBrand.erase( unique( uniqueBrand.begin(), uniqueBrand.end() ), uniqueBrand.end() ); //remove duplcaites
-
+  
+  remove(uniqueBrand);
   //loop through unique brands
   for(int i = 0; i < uniqueBrand.size(); i++){
     // initializes values for average calculation
