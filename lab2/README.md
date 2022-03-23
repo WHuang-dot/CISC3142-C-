@@ -2,7 +2,7 @@
 
 ## Simple Calculator ##
 
-To run the calculator enter:
+To run the calculator enter from the root directory with a terminal:
 
 ```make lab2```
 
