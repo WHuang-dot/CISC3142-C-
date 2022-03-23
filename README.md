@@ -7,3 +7,6 @@ For lab 1
 <br />
 For lab 2
 ```make lab2```
+
+
+There are individual readme file for each lab for further information for specific lab
