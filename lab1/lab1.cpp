@@ -47,7 +47,7 @@ int main() {
   vector<float>vPrice;
 
   ifstream in_stream;
-  in_stream.open("data.csv"); //opening the file.
+  in_stream.open("lab1/data.csv"); //opening the file.
 
   if (!in_stream.fail()) { //if the file is open
 
