@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
 
+
 enum class Operation { Add, Subtract, Multiply, Divide, SquareRoot };
 
 struct Calculator {
@@ -34,11 +35,11 @@ struct Calculator {
 int main() {
     int num1, num2;
     std::string operation;
-    std::cout << "Please provide an integer.\n";
+    printf("Please enter the left operand, then hit Enter. \n");
     std::cin >> num1;
-    std::cout << "What type of operation do you want to perform? (+, -, *, /,sqrt)\n";
+    printf("What type of operation do you want to perform? (+, -, *, /,sqrt)\n");
     std::cin >> operation;
-    std::cout << "Please provide another integer.\n";
+    printf("Please enter the right operand, then hit Enter.\n");
     std::cin >> num2;
 
     Operation op{};
@@ -57,5 +58,5 @@ int main() {
 
     Calculator calc(op);
     auto answer = calc.calculate(num1, num2);
-    std::cout << answer << "\n";
+    printf("The result is: %d\n",answer);
 }
