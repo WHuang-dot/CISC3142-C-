@@ -27,3 +27,14 @@ To run the calculator enter from the root directory with a terminal:
 ## Square root ##
 
 ![Square root Example](./calculation%20examples/SquareRoot.png?raw=true "SquareRoot")
+
+### Extra features that can be done (if I have more time)
+### Maybe I can do it over the weekend at some point
+
+- [ ] Multiple operands
+- [ ] Expression checker
+- [ ] Error message for bad inputs
+- [ ] Error message for invalid operators
+- [ ] Input to exit the program
+- [ ] Implement the calculator using stack ds
+- [ ] GUI
