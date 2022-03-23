@@ -2,6 +2,10 @@
 
 ## Simple Calculator ##
 
+To run the calculator enter:
+
+```make lab2```
+
 # Example calculation #
 
 ## Addition ##
@@ -11,3 +15,15 @@
 ## Subtraction ##
 
 ![Subtraction Example](./calculation%20examples/Subtraction.png?raw=true "Subtraction")
+
+## Multiplication ##
+
+![Multiplication Example](./calculation%20examples/Multiplication.png?raw=true "Multiplication")
+
+## Division ##
+
+![Division Example](./calculation%20examples/Division.png?raw=true "Division")
+
+## Square root ##
+
+![Square root Example](./calculation%20examples/SquareRoot.png?raw=true "SquareRoot")
