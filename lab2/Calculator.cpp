@@ -22,7 +22,7 @@ struct Calculator {
                 return a * sqrt(b);
             }break;
             default: {
-                std::cout << "Error: invalid operation!\n";
+                printf("Error: invalid operation!\n");
                 return 0;
             }
         }
