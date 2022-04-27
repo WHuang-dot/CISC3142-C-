@@ -1,9 +1,10 @@
 #include <iostream>
 #include <fstream>
 #include <stdio.h>   
-#include <time.h>    
+#include <time.h>   
+#include <cstring> 
 using namespace std;
-int createFile(char name){
+FILE* createFile(string name){
  
 time_t curr_time;
 tm * curr_tm;
@@ -15,7 +16,8 @@ curr_tm = localtime(&curr_time);
 strftime(date_string, 50, "%B-%d-%Y", curr_tm);
 
 const char* directory = "../output/";
-const char* fileName = date_string + name;
+const char* reportType = name.data();
+const char* fileName = strcat(date_string,reportType);
 const char* fileType = ".txt";
  
 char name_buffer[512];
@@ -24,10 +26,7 @@ FILE* f = NULL;
     sprintf(name_buffer,"%s%s%s",directory,fileName,fileType);
  
     f = fopen(name_buffer,"w");
- 
-    /* Write Data */
 
-    fclose(f);
-
-    cout << "Created file" << endl;
+    cout << "Created " << reportType << endl;
+    return f;
 }

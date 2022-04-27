@@ -20,11 +20,11 @@ bool isW(string grade) {
 
 void instructorPassedReport(unordered_map<string, instructor*>* instructors){
 
-    char type[] = "instructorPassedReport";
+    string type = "-InstructorPassedReport";
     int totalInstructor = 0;
     int totalStudent = 0;
     int totalPassedStudent = 0;
-    createFile(*type);
+    FILE* report = createFile(type);
     for(const auto& c : *instructors){
         int totalStudentForCurrentIns = 0;
         int totalPassedForCurrentIns = 0;
@@ -41,18 +41,22 @@ void instructorPassedReport(unordered_map<string, instructor*>* instructors){
                 totalStudent++;
             }
         }
-
         double passRate = ((double)totalPassedForCurrentIns)/(double)totalStudentForCurrentIns;
-        // cout << "Instructor " << insId << " has " << totalStudentForCurrentIns << " and " << totalPassedForCurrentIns << " Passed \n";
-        cout << "Instructor " << insId << " has " << totalStudentForCurrentIns << " and " << totalPassedForCurrentIns << " Passed and Pass Rate of " << passRate << endl;
+        string passRateString = to_string(passRate);
+        fprintf(report,"%s   %f \n",insId.c_str(), passRate);
     }
+
+    fclose(report);
 }
 
 void instructorWReport(unordered_map<string, instructor*>* instructors){
 
+    string type = "-InstructorWReport";
+
     int totalInstructor = 0;
     int totalStudent = 0;
     int totalPassedStudent = 0;
+    FILE* report = createFile(type);
     for(const auto& c : *instructors){
         int totalStudentForCurrentIns = 0;
         int totalPassedForCurrentIns = 0;
@@ -62,7 +66,7 @@ void instructorWReport(unordered_map<string, instructor*>* instructors){
             for(string s : courses->at(w)->students) {
                 totalStudentForCurrentIns++;
                 string &grade = students->at(s)->classes[w];
-                if(isPassed(grade)){
+                if(isW(grade)){
                     totalPassedStudent++;
                     totalPassedForCurrentIns++;
                 }
@@ -71,18 +75,19 @@ void instructorWReport(unordered_map<string, instructor*>* instructors){
         }
 
         double passRate = ((double)totalPassedForCurrentIns)/(double)totalStudentForCurrentIns;
-        // cout << "Instructor " << insId << " has " << totalStudentForCurrentIns << " and " << totalPassedForCurrentIns << " Passed \n";
-        cout << "Instructor " << insId << " has " << totalStudentForCurrentIns << " and " << totalPassedForCurrentIns << " Withdrew and W Rate of " << passRate << endl;
+        fprintf(report,"%s   %f \n",insId.c_str(), passRate);
     }
 }
 
 void CoursePassedReport(unordered_map<string, section*>* courses){
     unordered_map<string,double> uniqueCourseNos;
     unordered_map<string,double> passedStudentOfCourseNos;
+    string type = "-CoursePassedReport";
     int totalInstructor = 0;
     int totalStudent = 0;
     int totalPassedStudent = 0;
     string course_no;
+    FILE* report = createFile(type);
     for(const auto& c : *courses){
         bool passed;
         for (const auto& s : c.second->students) {
@@ -117,7 +122,7 @@ void CoursePassedReport(unordered_map<string, section*>* courses){
         double total = uniqueCourseNos[currentCourseNum];
         double passed = passedStudentOfCourseNos[currentCourseNum];
         double rate = (passed)/total;
-        cout << "CourseNo " << currentCourseNum << " total Student " << total << " Passed = " << passed << " Rate of " << rate << endl; 
+        fprintf(report,"%s   %f \n",currentCourseNum.c_str(), rate);
     }
 
 }
@@ -125,10 +130,12 @@ void CoursePassedReport(unordered_map<string, section*>* courses){
 void CourseWReport(unordered_map<string, section*>* courses){
     unordered_map<string,double> uniqueCourseNos;
     unordered_map<string,double> passedStudentOfCourseNos;
+    string type = "-CourseWReport";
     int totalInstructor = 0;
     int totalStudent = 0;
     int totalPassedStudent = 0;
     string course_no;
+    FILE* report = createFile(type);
     for(const auto& c : *courses){
         bool passed;
         for (const auto& s : c.second->students) {
@@ -163,7 +170,7 @@ void CourseWReport(unordered_map<string, section*>* courses){
         double total = uniqueCourseNos[currentCourseNum];
         double passed = passedStudentOfCourseNos[currentCourseNum];
         double rate = (passed)/total;
-        cout << "CourseNo " << currentCourseNum << " total Student " << total << " W = " << passed << " Rate of " << rate << endl; 
+        fprintf(report,"%s   %f \n",currentCourseNum.c_str(), rate);
     }
 
 }
