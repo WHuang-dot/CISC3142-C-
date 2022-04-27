@@ -11,7 +11,7 @@ please use the following command when cloning the repository:
 
 In order to get the submodule data.
 
-```git clone --recurse-submodules <https://github.com/WHuang-dot/CISC3142-C->.```
+```git clone --recurse-submodules <https://github.com/WHuang-dot/CISC3142-C->```
 
 To run the report creator:
 
