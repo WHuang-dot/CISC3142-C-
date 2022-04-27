@@ -2,6 +2,11 @@
 
 ## Course data report creator ##
 
+## Problem solving ##
+
+The program will create specifics report for the data which demonstrates the pass rate for given criteria.
+The program used object oriented approach and different data structures to organize date for easier data processing. 
+
 please use the following command when cloning the repository:
 
 In order to get the submodule data.
