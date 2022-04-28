@@ -13,7 +13,7 @@ lab2.o: ./lab2/main.cpp
 	g++ -c ./lab2/main.cpp
 
 lab3: main
-	cd lab3/cpp/ && main
+	cd lab3/cpp/ && ./main
 
 main: 
 	cd lab3/cpp/ && g++ main.cpp -o main 
